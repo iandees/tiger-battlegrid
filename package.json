@@ -1,0 +1,27 @@
+{
+  "name": "tiger-battlegrid",
+  "version": "1.0.0",
+  "description": "Compare TIGER and OSM road networks.",
+  "main": "index.js",
+  "dependencies": {
+    "generatorics": "^1.0.7",
+    "geojson-utils": "^1.1.0",
+    "cheap-ruler": "^2.5.0",
+    "@mapbox/tile-reduce": "^3.2.0",
+    "@mapbox/tilebelt": "^1.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iandees/tiger-battlegrid.git"
+  },
+  "author": "Ian Dees <ian.dees@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iandees/tiger-battlegrid/issues"
+  },
+  "homepage": "https://github.com/iandees/tiger-battlegrid#readme"
+}
