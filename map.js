@@ -23,6 +23,7 @@ module.exports = function(data, tile, writeData, done) {
   } else {
     // Both are empty
     done(null, null);
+    return;
   }
 
   if (diff.length) {
@@ -69,8 +70,8 @@ function toLines(layer) {
   for (var i = 0; i < layer.length; i++) {
     var feature = layer.feature(i);
 
-    // only consider polygon features with Tiger name or OSM highway tag
-    if (feature.type === 2 && (feature.properties.FULLNAME !== '' || feature.properties.highway)) {
+    // only consider linear features with Tiger name or OSM highway tag
+    if (feature.type === 2 && (feature.properties.NAME_EXPANDED !== '' || feature.properties.highway)) {
       var geom = feature.loadGeometry();
 
       for (var k = 0; k < geom.length; k++) {
