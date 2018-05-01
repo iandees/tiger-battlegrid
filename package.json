@@ -4,11 +4,11 @@
   "description": "Compare TIGER and OSM road networks.",
   "main": "index.js",
   "dependencies": {
-    "generatorics": "^1.0.7",
-    "geojson-utils": "^1.1.0",
-    "cheap-ruler": "^2.5.0",
     "@mapbox/tile-reduce": "^3.2.0",
-    "@mapbox/tilebelt": "^1.0.1"
+    "@mapbox/tilebelt": "^1.0.1",
+    "cheap-ruler": "^2.5.1",
+    "generatorics": "^1.1.0",
+    "geojson-utils": "^1.1.0"
   },
   "devDependencies": {},
   "scripts": {
