@@ -7,19 +7,20 @@ module.exports = function(data, tile, writeData, done) {
 
   // filter and normalize input geometry
   var tiger = toLines(data.tiger.tiger_roads);
-  var streets = toLines(data.osm.osm);
+  var osm = toLines(data.osm.osm);
 
   var diff;
-  if (tiger.length > 0 && streets.length > 0) {
-    // find tiger parts that are not covered by streets within 10 pixels;
+  if (tiger.length > 0 && osm.length > 0) {
+    // find tiger parts that are not covered by osm within 10 pixels;
     // filter out chunks that are too short
-    diff = linematch(tiger, streets, 10).filter(filterShort);
+    diff = linematch(tiger, osm, 10).filter(filterShort);
   } else if (tiger.length > 0) {
-    // The streets layer is empty and tiger has something
+    // The osm layer is empty and tiger has something
     diff = tiger;
-  } else if (streets.length > 0) {
-    // The tiger layer is empty and streets has something
-    diff = streets;
+  } else if (osm.length > 0) {
+    // The tiger layer is empty and osm has something
+    done(null, null);
+    return;
   } else {
     // Both are empty
     done(null, null);
