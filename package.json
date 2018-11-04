@@ -5,10 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "@mapbox/tile-reduce": "^3.2.0",
-    "@mapbox/tilebelt": "^1.0.1",
-    "cheap-ruler": "^2.5.1",
-    "generatorics": "^1.1.0",
-    "geojson-utils": "^1.1.0"
+    "lineclip": "^1.1.5",
+    "linematch": "^1.1.1"
   },
   "devDependencies": {},
   "scripts": {
