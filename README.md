@@ -12,7 +12,7 @@ This project consumes [TIGER roads vector tiles](https://github.com/iandees/tige
 
    ```
    mkdir -p /mnt/osmqa
-   curl -L https://s3.amazonaws.com/mapbox/osm-qa-tiles-production/latest.country/united_states_of_america.mbtiles.gz | gzip -dc > /mnt/osmqa/united_states_of_america.mbtiles
+   curl -L https://hot-qa-tiles.s3.amazonaws.com/latest.country/united_states_of_america.mbtiles.gz | gzip -dc > /mnt/osmqa/united_states_of_america.mbtiles
    curl -L https://s3.amazonaws.com/data.openstreetmap.us/tiger2020_expanded_roads.mbtiles > /mnt/osmqa/tiger2020_tiles.mbtiles
    ```
 
@@ -26,12 +26,29 @@ This project consumes [TIGER roads vector tiles](https://github.com/iandees/tige
    cd tiger-battlegrid-master/
    ```
 
-1. If you're on an Amazon Linux EC2 instance, you'll need to install Node and NPM (following [their instructions](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/setting-up-node-on-ec2-instance.html)):
+1. Install tippecanoe:
 
    ```
-   curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
-   . ~/.nvm/nvm.sh
-   nvm install 9.8.0
+   sudo apt-get install libsqlite3-dev zlib1g-dev
+   cd /tmp
+   curl -L https://github.com/mapbox/tippecanoe/archive/1.34.3.tar.gz | tar zxf -
+   cd tippecanoe-1.34.3/
+   make -j$(nproc)
+   sudo make install
+   ```
+
+1. Install Node and NPM:
+
+   ```
+   sudo apt-get update
+   sudo apt-get install -y npm python-is-python3
+   ```
+
+1. Fix Ubuntu/npm/node-sqlite3 problems:
+
+   ```
+   sudo npm install --global node-gyp@latest
+   npm config set node_gyp $(npm prefix -g)/lib/node_modules/node-gyp/bin/node-gyp.js
    ```
 
 1. Install Node dependencies:
@@ -62,7 +79,8 @@ This project consumes [TIGER roads vector tiles](https://github.com/iandees/tige
 1. Install [Mapbox command line tools](https://github.com/mapbox/mapbox-cli-py)
 
    ```
-   pip install --user mapboxcli
+   sudo apt-get install -y python3-pip
+   pip3 install --user mapboxcli
    ```
 
 1. Create a new [access token](https://www.mapbox.com/account/access-tokens) with all "uploads" permissions. Save the access token (you won't see it again) locally. Treat it like a password and don't share it with anyone.
@@ -76,5 +94,5 @@ This project consumes [TIGER roads vector tiles](https://github.com/iandees/tige
 1. Upload the tileset to Mapbox, replacing the existing dataset.
 
    ```
-   mapbox upload tiger2020-delta /mnt/osmqa/missing_tiger.mbtiles
+   ~/.local/bin/mapbox upload tiger2020-delta /mnt/osmqa/missing_tiger.mbtiles
    ```
