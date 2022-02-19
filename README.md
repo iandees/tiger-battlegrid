@@ -13,7 +13,7 @@ This project consumes [TIGER roads vector tiles](https://github.com/iandees/tige
    ```
    mkdir -p /mnt/osmqa
    curl -L https://hot-qa-tiles.s3.amazonaws.com/latest.country/united_states_of_america.mbtiles.gz | gzip -dc > /mnt/osmqa/united_states_of_america.mbtiles
-   curl -L https://s3.amazonaws.com/data.openstreetmap.us/tiger2020_expanded_roads.mbtiles > /mnt/osmqa/tiger2020_tiles.mbtiles
+   curl -L https://s3.amazonaws.com/data.openstreetmap.us/tiger2021_expanded_roads.mbtiles > /mnt/osmqa/tiger2021_tiles.mbtiles
    ```
 
 ### Install software
@@ -94,5 +94,5 @@ This project consumes [TIGER roads vector tiles](https://github.com/iandees/tige
 1. Upload the tileset to Mapbox, replacing the existing dataset.
 
    ```
-   ~/.local/bin/mapbox upload tiger2020-delta /mnt/osmqa/missing_tiger.mbtiles
+   ~/.local/bin/mapbox upload tiger2021-delta /mnt/osmqa/missing_tiger.mbtiles
    ```
