@@ -94,8 +94,18 @@ This project consumes [TIGER roads vector tiles](https://github.com/iandees/tige
    export MAPBOX_ACCESS_TOKEN=<secret_token>
    ```
 
-1. Upload the tileset to Mapbox, replacing the existing dataset.
+1. Upload the tileset to Mapbox.
 
    ```
-   ~/.local/bin/mapbox upload tiger2021-delta /mnt/osmqa/missing_tiger.mbtiles
+   ~/.local/bin/mapbox upload tiger2022-delta /mnt/osmqa/missing_tiger.mbtiles
    ```
+
+1. Upload the TIGER roads data to Mapbox as well.
+
+   ```
+   ~/.local/bin/mapbox upload tiger2022-roads /mnt/osmqa/tiger2022_tiles.mbtiles
+   ```
+
+## Creating the new style on Mapbox
+
+1. In [Mapbox Studio](https://studio.mapbox.com/), click the New Style button, then click Upload Style and drop the `style.json` file from this repo on the upload area.
