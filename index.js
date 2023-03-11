@@ -8,7 +8,7 @@ tileReduce({
   map: path.join(__dirname, '/map.js'),
   sources: [
     {name: 'osm', mbtiles: path.join('/mnt/osmqa', 'united_states_of_america.mbtiles'), raw: true},
-    {name: 'tiger', mbtiles: path.join('/mnt/osmqa', 'tiger2020_tiles.mbtiles'), raw: true}
+    {name: 'tiger', mbtiles: path.join('/mnt/osmqa', 'tiger2022_tiles.mbtiles'), raw: true}
   ]
 })
 .on('reduce', function(num) {
