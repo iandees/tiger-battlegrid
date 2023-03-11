@@ -1,0 +1,140 @@
+{
+    "version": 8,
+    "name": "TIGER 2022 Roads",
+    "metadata": {
+        "mapbox:autocomposite": true,
+        "mapbox:type": "template",
+        "mapbox:trackposition": false,
+        "mapbox:sdk-support": {
+            "js": "0.40.0",
+            "android": "5.2.0",
+            "ios": "3.7.0"
+        }
+    },
+    "center": [0, -1.1368683772161603e-13],
+    "zoom": 0.5698554949637619,
+    "bearing": 0,
+    "pitch": 0,
+    "sources": {
+        "composite": {
+            "url": "mapbox://openstreetmapus.tiger2022-delta,openstreetmapus.tiger2022-roads",
+            "type": "vector"
+        }
+    },
+    "sprite": "mapbox://sprites/openstreetmapus/clf46fv7v000v01q67632zujw/ck2u8j60r58fu0sgyxrigm3cu",
+    "glyphs": "mapbox://fonts/mapbox/{fontstack}/{range}.pbf",
+    "layers": [
+        {
+            "id": "background",
+            "type": "background",
+            "paint": {
+                "background-color": "hsl(0, 0%, 0%)",
+                "background-opacity": 0
+            }
+        },
+        {
+            "id": "Centerlines",
+            "type": "line",
+            "source": "composite",
+            "source-layer": "tiger_roads",
+            "layout": {
+                "visibility": "visible",
+                "line-join": "round",
+                "line-cap": "round"
+            },
+            "paint": {
+                "line-color": "hsl(60, 100%, 50%)",
+                "line-blur": 0,
+                "line-width": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    14,
+                    1,
+                    15,
+                    2
+                ]
+            }
+        },
+        {
+            "id": "tiger-delta",
+            "type": "line",
+            "source": "composite",
+            "source-layer": "missing_tiger",
+            "minzoom": 3,
+            "layout": {},
+            "paint": {
+                "line-width": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    5,
+                    1,
+                    12,
+                    3
+                ],
+                "line-color": "hsl(359, 100%, 50%)"
+            }
+        },
+        {
+            "id": "Labels",
+            "type": "symbol",
+            "source": "composite",
+            "source-layer": "tiger_roads",
+            "minzoom": 12,
+            "filter": [
+                "match",
+                ["geometry-type"],
+                ["LineString", "Point", "Polygon"],
+                true,
+                false
+            ],
+            "layout": {
+                "text-field": ["to-string", ["get", "NAME_EXPANDED"]],
+                "text-font": ["Open Sans SemiBold", "Arial Unicode MS Regular"],
+                "symbol-placement": "line",
+                "symbol-spacing": 150,
+                "text-rotation-alignment": "map",
+                "text-offset": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    0,
+                    ["literal", [0, 0]],
+                    22,
+                    ["literal", [0, 0]]
+                ],
+                "text-size": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    13,
+                    11,
+                    17,
+                    16
+                ],
+                "text-anchor": "bottom"
+            },
+            "paint": {
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-width": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    12,
+                    2,
+                    22,
+                    4
+                ],
+                "text-halo-blur": 1
+            }
+        }
+    ],
+    "created": "2023-03-11T16:24:23.770Z",
+    "modified": "2023-03-11T16:24:23.770Z",
+    "id": "clf46fv7v000v01q67632zujw",
+    "owner": "openstreetmapus",
+    "visibility": "private",
+    "protected": false,
+    "draft": false
+}
