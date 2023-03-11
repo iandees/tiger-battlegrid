@@ -13,7 +13,7 @@ This project consumes [TIGER roads vector tiles](https://github.com/iandees/tige
    ```
    mkdir -p /mnt/osmqa
    curl -L https://hot-qa-tiles.s3.amazonaws.com/latest.country/united_states_of_america.mbtiles.gz | gzip -dc > /mnt/osmqa/united_states_of_america.mbtiles
-   curl -L https://s3.amazonaws.com/data.openstreetmap.us/tiger2021_expanded_roads.mbtiles > /mnt/osmqa/tiger2021_tiles.mbtiles
+   curl -L https://s3.amazonaws.com/data.openstreetmap.us/tiger2022_expanded_roads.mbtiles > /mnt/osmqa/tiger2022_tiles.mbtiles
    ```
 
 ### Install software
@@ -29,7 +29,7 @@ This project consumes [TIGER roads vector tiles](https://github.com/iandees/tige
 1. Install tippecanoe:
 
    ```
-   sudo apt-get install libsqlite3-dev zlib1g-dev
+   sudo apt-get install -y build-essential libsqlite3-dev zlib1g-dev
    cd /tmp
    curl -L https://github.com/mapbox/tippecanoe/archive/1.34.3.tar.gz | tar zxf -
    cd tippecanoe-1.34.3/
@@ -37,23 +37,26 @@ This project consumes [TIGER roads vector tiles](https://github.com/iandees/tige
    sudo make install
    ```
 
-1. Install Node and NPM:
+1. Install NVM, Node, and NPM:
 
    ```
-   sudo apt-get update
-   sudo apt-get install -y npm python-is-python3
+   curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+   source ~/.profile
+   nvm install 10
+   nvm use 10
    ```
 
 1. Fix Ubuntu/npm/node-sqlite3 problems:
 
    ```
-   sudo npm install --global node-gyp@latest
+   npm install --global node-gyp@latest
    npm config set node_gyp $(npm prefix -g)/lib/node_modules/node-gyp/bin/node-gyp.js
    ```
 
-1. Install Node dependencies:
+1. Install Node dependencies for tiger-battlegrid:
 
    ```
+   cd /tmp/tiger-battlegrid-master/
    npm install
    ```
 
