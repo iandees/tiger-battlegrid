@@ -13,7 +13,7 @@ This project consumes [TIGER roads vector tiles](https://github.com/iandees/tige
    ```
    mkdir -p /mnt/osmqa
    curl -L https://hot-qa-tiles.s3.amazonaws.com/latest.country/united_states_of_america.mbtiles.gz | gzip -dc > /mnt/osmqa/united_states_of_america.mbtiles
-   curl -L https://s3.amazonaws.com/data.openstreetmap.us/tiger2022_expanded_roads.mbtiles > /mnt/osmqa/tiger2022_tiles.mbtiles
+   curl -L https://s3.amazonaws.com/data.openstreetmap.us/tiger2023_expanded_roads.mbtiles > /mnt/osmqa/tiger2023_tiles.mbtiles
    ```
 
 ### Install software
@@ -40,7 +40,7 @@ This project consumes [TIGER roads vector tiles](https://github.com/iandees/tige
 1. Install NVM, Node, and NPM:
 
    ```
-   curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+   curl -L https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
    source ~/.profile
    nvm install 10
    nvm use 10
@@ -97,13 +97,13 @@ This project consumes [TIGER roads vector tiles](https://github.com/iandees/tige
 1. Upload the tileset to Mapbox.
 
    ```
-   ~/.local/bin/mapbox upload tiger2022-delta /mnt/osmqa/missing_tiger.mbtiles
+   ~/.local/bin/mapbox upload tiger2023-delta /mnt/osmqa/missing_tiger.mbtiles
    ```
 
 1. Upload the TIGER roads data to Mapbox as well.
 
    ```
-   ~/.local/bin/mapbox upload tiger2022-roads /mnt/osmqa/tiger2022_tiles.mbtiles
+   ~/.local/bin/mapbox upload tiger2023-roads /mnt/osmqa/tiger2023_tiles.mbtiles
    ```
 
 ## Creating the new style on Mapbox
